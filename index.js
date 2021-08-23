@@ -1,20 +1,20 @@
 const fs = require("fs");
-const inquirer = require("inquireer");
+const inquirer = require("inquirer");
 const emailValidator = require("email-validator");
 
 inquirer
   .prompt([
     {
       name: "name",
-      message: `What is the ${manager}'s name?`,
+      message: `What is the ${role}'s name?`,
     },
     {
       name: "id",
-      message: `What is the ${manager}'s id?`,
+      message: `What is the ${role}'s id?`,
     },
     {
       name: "email",
-      message: `What is the ${manager}'s email?`,
+      message: `What is the ${role}'s email?`,
       validate(input) {
         if (emailValidator.validate(input)) {
           return true;
@@ -25,7 +25,7 @@ inquirer
     },
     {
       name: "officeNumber",
-      message: `What is the ${manager}'s office number?`,
+      message: `What is the ${role}'s office number?`,
     },
     {
       type: "list",
@@ -38,4 +38,6 @@ inquirer
       ],
     },
   ])
-  .then((answers) => {});
+  .then((answers) => {
+    console.log(answers);
+  });
