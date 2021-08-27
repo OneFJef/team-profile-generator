@@ -34,11 +34,16 @@ function init() {
   inquirer
     .prompt(employeeQuestions)
     .then((answers) => {
+      // console.log({ answers });
+      delete answers["addRole"];
+      // console.log({ answers });
       let answersWithRole = { ...answers, employeeRole };
       return answersWithRole;
     })
     .then((answersWithRole) => {
+      // console.log({ team });
       team.push(answersWithRole);
+      // console.log({ team });
       switch (answersWithRole.addRole) {
         case "Engineer":
           employee = "Engineer";
@@ -48,10 +53,15 @@ function init() {
           employee = "Intern";
           init();
           break;
-        default:
+        case "I don't want to add anymore team members.":
+          buildHTML();
           break;
       }
     });
+}
+
+function buildHTML() {
+  ``
 }
 
 init();
