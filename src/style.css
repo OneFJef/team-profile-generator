@@ -1,0 +1,30 @@
+:root {
+  --red: #e84756;
+  --white: #ffffff;
+  --blue: #0077f7;
+}
+
+header {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 5ch;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+.card {
+  margin: 1rem;
+}
+
+.card .card-header {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.card h5 {
+  margin: .25rem 0;
+}
+
