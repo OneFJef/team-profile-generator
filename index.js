@@ -9,9 +9,13 @@ const manager = new Manager();
 const engineer = new Engineer();
 const intern = new Intern();
 
+let questions = [];
 let employee = "Manager";
 let team = [];
-let questions = [];
+
+let managerArray = [];
+let engineerArray = [];
+let internArray = [];
 
 function init() {
   switch (employee) {
@@ -34,34 +38,56 @@ function init() {
   inquirer
     .prompt(employeeQuestions)
     .then((answers) => {
-      // console.log({ answers });
-      delete answers["addRole"];
-      // console.log({ answers });
-      let answersWithRole = { ...answers, employeeRole };
-      return answersWithRole;
+      let employeeWithRole = { ...answers, employeeRole };
+      return employeeWithRole;
     })
-    .then((answersWithRole) => {
-      // console.log({ team });
-      team.push(answersWithRole);
-      // console.log({ team });
-      switch (answersWithRole.addRole) {
+    .then((employeeWithRole) => {
+      switch (employeeWithRole.addRole) {
         case "Engineer":
+          storeAnswers(employeeWithRole);
           employee = "Engineer";
           init();
           break;
         case "Intern":
+          storeAnswers(employeeWithRole);
           employee = "Intern";
           init();
           break;
         case "I don't want to add anymore team members.":
-          buildHTML();
+          // buildHTML();
+          storeAnswers(employeeWithRole);
           break;
       }
     });
 }
 
+function storeAnswers(e) {
+  switch (employee) {
+    case "Manager":
+      console.log({ employee });
+      managerArray.push(e);
+      console.log({ managerArray });
+      break;
+    case "Engineer":
+      console.log({ employee });
+      engineerArray.push(e);
+      console.log({ engineerArray });
+      break;
+    case "Intern":
+      console.log({ employee });
+      internArray.push(e);
+      console.log({ internArray });
+      break;
+    default:
+      break;
+  }
+}
+
 function buildHTML() {
-  ``
+  fs.readFile("./src/index.html", (err, data) => {
+    if (err) throw err;
+    console.log(data);
+  });
 }
 
 init();
