@@ -30,7 +30,7 @@
   
   ## **Usage**
   
-  	npm run build-team
+  	npm run team
   
   ---
   
