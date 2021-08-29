@@ -159,7 +159,7 @@ function buildHTML() {
     if (err) {
       console.log(err);
     } else {
-      let cleanTeam = teamArray.toString().replace(",", "");
+      let cleanTeam = teamArray.toString().replaceAll(",", "");
       let result = data.toString().replace("<img>", cleanTeam);
       fs.writeFile("./dist/index.html", result, "utf8", function (err) {
         if (err) {
