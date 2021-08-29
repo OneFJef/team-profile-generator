@@ -70,7 +70,6 @@ function createTeam() {
         );
         role = answers.addRole;
         teamArray.push(buildCard(manager));
-        console.log({ teamArray });
         createTeam();
       });
       break;
@@ -86,7 +85,6 @@ function createTeam() {
         );
         role = answers.addRole;
         teamArray.push(buildCard(engineer));
-        console.log({ teamArray });
         createTeam();
       });
       break;
@@ -102,7 +100,6 @@ function createTeam() {
         );
         role = answers.addRole;
         teamArray.push(buildCard(intern));
-        console.log({ teamArray });
         createTeam();
       });
       break;
