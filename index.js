@@ -2,13 +2,17 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const emailValidator = require("email-validator");
 
+// Import classes.
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
+// Sets start point for inquirer logic.
 let role = "Manager";
+// Stores all of the answers to be pushed to HTML.
 let teamArray = [];
 
+// Questions just for the unique classes.
 let questionsRole = [
   {
     name: "officeNumber",
@@ -24,6 +28,7 @@ let questionsRole = [
   },
 ];
 
+// Navigation question to be appended to the end of the logic.
 let addRole = {
   type: "list",
   name: "addRole",
@@ -31,6 +36,7 @@ let addRole = {
   choices: ["Engineer", "Intern", "I don't want to add anymore team members."],
 };
 
+// Generic questions for every team member.
 function questionsBase(e) {
   return (questions = [
     {
@@ -55,6 +61,8 @@ function questionsBase(e) {
   ]);
 }
 
+// Checks the current role, fires off questions for that role, creates object with answers given,
+// changes the role based on your "addRole andswer", stores the answers in "teamArray", and either starts from the top or builds the HTML.
 function createTeam() {
   let updatedQuestions = [];
   switch (role) {
@@ -109,6 +117,7 @@ function createTeam() {
   }
 }
 
+// Builds an HTML card to be added to the HTML later.
 function buildCard(a) {
   let roleTitle = "";
   let roleSpecialIcon = "";
@@ -151,6 +160,7 @@ function buildCard(a) {
   return card;
 }
 
+// Reads the source HTML, applies all the collected answers, writes the new index.html to ./dist, and copies the style.css to ./dist.
 function buildHTML() {
   fs.readFile("./src/index.html", (err, data) => {
     if (err) {
@@ -161,6 +171,8 @@ function buildHTML() {
       fs.writeFile("./dist/index.html", result, "utf8", function (err) {
         if (err) {
           console.log(err);
+        } else {
+          console.log("Your Team has been generated.")
         }
       });
       fs.copyFile('./src/style.css', './dist/style.css', (err) => {
@@ -172,6 +184,7 @@ function buildHTML() {
   });
 }
 
+// Function to start the machine!
 function init() {
   createTeam();
 }
