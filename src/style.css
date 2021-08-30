@@ -27,6 +27,7 @@ main {
   width: 18rem;
   border: 0;
   box-shadow: 5px 5px 5px grey;
+  background-color: var(--grey);
 }
 
 .card .card-header {
