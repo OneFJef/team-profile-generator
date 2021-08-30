@@ -6,6 +6,8 @@
   ## **Description**
   
   Command-line tool that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.
+
+  [![Team Profile Generator Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1630284961/video_to_markdown/images/google-drive--1s2CR_uuJ7V-p0ifGyJ3Uyl6QfCjI_J1s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/1s2CR_uuJ7V-p0ifGyJ3Uyl6QfCjI_J1s/view "Team Profile Generator Demo")
   
   ---
   
